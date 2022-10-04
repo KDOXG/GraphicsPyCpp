@@ -1,0 +1,4 @@
+CppModule.egg-info/
+build/
+old/
+lib/CppModule.cp311-win_amd64.pyd
