@@ -1,6 +1,7 @@
 // Source: https://github.com/dario-marvin/Mandelbrot
 
 #include "../inc/fractal.h"
+using namespace std;
 
 int mandelbrot(double real, double imag) {
 	int limit = 100;
@@ -19,7 +20,7 @@ int mandelbrot(double real, double imag) {
 	return limit;
 }
 
-int fractal(int width = 30, int heigth = 10, int xi = 15, int yi = 5) {
+vector<vector<int>> fractal(int width = 30, int heigth = 10) {
 	
 	// int width = 30; //number of characters fitting horizontally on my screen 
 	// int heigth = 10; //number of characters fitting vertically on my screen
@@ -28,6 +29,8 @@ int fractal(int width = 30, int heigth = 10, int xi = 15, int yi = 5) {
 	double x_fin = 1.0;
 	double y_start = -1.0;
 	double y_fin = 1.0;
+
+    vector<vector<int>> matrix;
 	
 	//~ double x_start = -0.25;
 	//~ double x_fin = 0.05;
@@ -42,28 +45,31 @@ int fractal(int width = 30, int heigth = 10, int xi = 15, int yi = 5) {
 	double dx = (x_fin - x_start)/(width - 1);
 	double dy = (y_fin - y_start)/(heigth - 1);
 
-    int valReturn = 0;
+    int val = 0;
 
-	// for (int i = 0; i < heigth; i++) {
-	// 	for (int j = 0; j < width; j++) {
-			
-    double x = x_start + xi*dx; // current real value
-    double y = y_fin - yi*dy; // current imaginary value
+	for (int i = 0; i < heigth; i++) {
+        matrix.emplace_back();
+		for (int j = 0; j < width; j++) {
+            double x = x_start + j*dx; // current real value
+            double y = y_fin - i*dy; // current imaginary value
     
-    int value = mandelbrot(x,y);
-    
-    if (value == 100) valReturn = BLANK; // {cout << " ";}
-    else if (value > 90) valReturn = red; // {cout << red << char_;}
-    else if (value > 70) valReturn = l_red; // {cout << l_red << char_;}
-    else if (value > 50) valReturn = orange; // {cout << orange << char_;}
-    else if (value > 30) valReturn = yellow; // {cout << yellow << char_;}
-    else if (value > 20) valReturn = l_green; // {cout << l_green << char_;}
-    else if (value > 10) valReturn = green; // {cout << green << char_;}
-    else if (value > 5) valReturn = cyan; // {cout << cyan << char_;}
-    else if (value > 3) valReturn = l_blue; // {cout << l_blue << char_;}
-    else if (value > 2) valReturn = blue; // {cout << blue << char_;}
-    else if (value > 1) valReturn = magenta; // {cout << magenta << char_;}
-    else valReturn = l_magenta; // {cout << l_magenta << char_;}
+            int value = mandelbrot(x,y);
             
-	return valReturn;
+            if (value == 100) val = BLANK; // {cout << " ";}
+            else if (value > 90) val = red; // {cout << red << char_;}
+            else if (value > 70) val = l_red; // {cout << l_red << char_;}
+            else if (value > 50) val = orange; // {cout << orange << char_;}
+            else if (value > 30) val = yellow; // {cout << yellow << char_;}
+            else if (value > 20) val = l_green; // {cout << l_green << char_;}
+            else if (value > 10) val = green; // {cout << green << char_;}
+            else if (value > 5) val = cyan; // {cout << cyan << char_;}
+            else if (value > 3) val = l_blue; // {cout << l_blue << char_;}
+            else if (value > 2) val = blue; // {cout << blue << char_;}
+            else if (value > 1) val = magenta; // {cout << magenta << char_;}
+            else val = l_magenta; // {cout << l_magenta << char_;}
+                    
+            matrix[i].push_back(val);
+        }
+    }
+	return matrix;
 }

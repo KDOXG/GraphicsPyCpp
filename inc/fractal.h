@@ -1,4 +1,8 @@
-int fractal(int width, int heigth, int x, int y);
+#include <vector>
+using namespace std;
+
+int mandelbrot(double real, double imag);
+vector<vector<int>> fractal(int width, int heigth);
 
 enum FractalColors {
     BLANK = 0,
