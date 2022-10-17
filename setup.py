@@ -2,6 +2,8 @@ from pathlib import Path
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import setup
 
+# pip install -e . -vvv
+
 cppmodule = Pybind11Extension(
     'CppModule',
     [str(file) for file in Path('src').glob('*.*') if file.suffix in {".cpp", ".cc"}],

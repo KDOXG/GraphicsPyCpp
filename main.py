@@ -1,8 +1,6 @@
 from lib.CppModule import fractal
 import matplotlib.pyplot as plt
 
-# pip install -e . -vvv
-
-v = fractal(1600, 1000)
+v = fractal(3000, 2000)
 plt.matshow(v)
 plt.show()
