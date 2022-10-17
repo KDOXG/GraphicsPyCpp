@@ -22,25 +22,12 @@ int mandelbrot(double real, double imag) {
 
 vector<vector<int>> fractal(int width = 30, int heigth = 10) {
 	
-	// int width = 30; //number of characters fitting horizontally on my screen 
-	// int heigth = 10; //number of characters fitting vertically on my screen
-	
 	double x_start = -2.0;
 	double x_fin = 1.0;
 	double y_start = -1.0;
 	double y_fin = 1.0;
 
-    vector<vector<int>> matrix;
-	
-	//~ double x_start = -0.25;
-	//~ double x_fin = 0.05;
-	//~ double y_start = -0.95;
-	//~ double y_fin = -0.75;
-	
-	//~ double x_start = -0.13;
-	//~ double x_fin = -0.085;
-	//~ double y_start = -0.91;
-	//~ double y_fin = -0.88;
+    vector<vector<int>> matrix(heigth, vector<int>(width));
 	
 	double dx = (x_fin - x_start)/(width - 1);
 	double dy = (y_fin - y_start)/(heigth - 1);
@@ -48,27 +35,26 @@ vector<vector<int>> fractal(int width = 30, int heigth = 10) {
     int val = 0;
 
 	for (int i = 0; i < heigth; i++) {
-        matrix.emplace_back();
 		for (int j = 0; j < width; j++) {
-            double x = x_start + j*dx; // current real value
-            double y = y_fin - i*dy; // current imaginary value
+            double x = x_start + j*dx;
+            double y = y_fin - i*dy;
     
             int value = mandelbrot(x,y);
             
-            if (value == 100) val = BLANK; // {cout << " ";}
-            else if (value > 90) val = red; // {cout << red << char_;}
-            else if (value > 70) val = l_red; // {cout << l_red << char_;}
-            else if (value > 50) val = orange; // {cout << orange << char_;}
-            else if (value > 30) val = yellow; // {cout << yellow << char_;}
-            else if (value > 20) val = l_green; // {cout << l_green << char_;}
-            else if (value > 10) val = green; // {cout << green << char_;}
-            else if (value > 5) val = cyan; // {cout << cyan << char_;}
-            else if (value > 3) val = l_blue; // {cout << l_blue << char_;}
-            else if (value > 2) val = blue; // {cout << blue << char_;}
-            else if (value > 1) val = magenta; // {cout << magenta << char_;}
-            else val = l_magenta; // {cout << l_magenta << char_;}
+            if (value == 100) val = BLANK;
+            else if (value > 90) val = red;
+            else if (value > 70) val = l_red;
+            else if (value > 50) val = orange;
+            else if (value > 30) val = yellow;
+            else if (value > 20) val = l_green;
+            else if (value > 10) val = green;
+            else if (value > 5) val = cyan;
+            else if (value > 3) val = l_blue;
+            else if (value > 2) val = blue;
+            else if (value > 1) val = magenta;
+            else val = l_magenta;
                     
-            matrix[i].push_back(val);
+            matrix[i][j] = val;
         }
     }
 	return matrix;
