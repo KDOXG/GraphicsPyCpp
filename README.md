@@ -21,11 +21,11 @@ The binding made with pybind11 allows using many features from C++ STL. The main
 * pybind11
 
 ## How to run:
-> `git clone <this_repo>`
->
-> `make`
->
-> `make main`
+`git clone <this_repo>`
+
+`make`
+
+`make main`
 
 The `make` command runs the dependencies install through `pip install -r requirements` and the C++ module build through the script `setup.py`. The `make main` command runs the main application script from `main.py`.
 
