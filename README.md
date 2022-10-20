@@ -1,15 +1,17 @@
 # GraphicsPyCpp
 
-A Python and C++ integrated graphical application. Renderizes an image of Mandelbrot fractal. Binding made with pybind11.
+A Python and C++ binding graphical application. Renders an image of Mandelbrot fractal. Binding made with **pybind11**.
 
 ## How the binding works
 
+The binding works on the Python side using **pybind11**. During the Python library using `pip install -e . -vvv`, pybind11 builds the C++ module into a binary. After importing the module as a Python library with the *import* command, all functions defined in the C++ code can be called in the Python code.
 
+The binding made with pybind11 allows using many features from C++ STL. The main function from this C++ application `fractal` returns `vector<vector<int>>`, which translate as a `list` object of `list` objects of `int`.
 
 ## Content
-* `src` folder containing the C++ module and binding configuration file
-* `inc` folder containing C++ header files
-* `lib` folder, the output folder for the C++ module build
+* `src` folder containing the C++ module;
+* `inc` folder containing C++ header file and pybind configuration file required for module build and binding;
+* `lib` folder is the C++ module build output directory.
 
 ## Requirements
 * Python with pip.
@@ -30,4 +32,5 @@ The `make` command runs the dependencies install through `pip install -r require
 By default, the script renders a 3000x2000 image. If you want to customize, run `python main.py <width> <height>`.
 
 ## Credits
-* Dario Marvin for the Mandelbrot fractal implementation
+* pybind, pybind11. [Source](https://github.com/pybind/pybind11)
+* Dario Marvin, the Mandelbrot fractal implementation. [Source](https://github.com/dario-marvin/Mandelbrot)
