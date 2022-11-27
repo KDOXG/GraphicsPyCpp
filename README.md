@@ -4,7 +4,7 @@ A Python and C++ binding graphical application. Renders an image of Mandelbrot f
 
 ## How the binding works
 
-The binding works on the Python side using **pybind11**. During the Python library using `pip install -e . -vvv`, pybind11 builds the C++ module into a binary. After importing the module as a Python library with the *import* command, all functions defined in the C++ code can be called in the Python code.
+The binding works on the Python side through **pybind11**. During the Python library build using `pip install -e . -vvv`, pybind11 builds the C++ module into a binary module. After importing the module as a Python library with the *import* command, all functions defined in the C++ code can be called in the Python code.
 
 The binding made with pybind11 allows using many features from C++ STL. The main function from this C++ application `fractal` returns `vector<vector<int>>`, which translate as a `list` object of `list` objects of `int`.
 
